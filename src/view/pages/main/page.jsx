@@ -1,6 +1,10 @@
+import AppLayout from "../../layouts/app.layout";
+
 function MainPage() {
 	return (
-		<div>MainPage</div>
+		<AppLayout>
+			<h1>Main Page</h1>
+		</AppLayout>
 	)
 }
 
