@@ -1,9 +1,10 @@
-import AppLayout from "../../layouts/app.layout";
+import AppLayout from '@/view/layouts/app.layout';
+import Header from '@/components/Header/Header';
 
 function MainPage() {
 	return (
 		<AppLayout>
-			<h1>Main Page</h1>
+			<Header />
 		</AppLayout>
 	)
 }
