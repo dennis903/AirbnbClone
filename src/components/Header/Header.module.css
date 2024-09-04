@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+	position: relative;
 }
 
 .header-btn {
@@ -39,6 +40,12 @@
   text-decoration: none;
 }
 
+.header-content__center {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
 .header-content__right {
   display: flex;
   align-items: center;
@@ -58,56 +65,4 @@
 
 .myinfo-btn:hover {
   box-shadow: 0 2px 4px rgba(0,0,0,0.18);
-}
-
-.header-search {
-  display: flex;
-  justify-content: left;
-  width: 844px;
-  border: #dddddd 1px solid;
-  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
-  border-radius: 32px;
-  margin: 0 auto;
-}
-
-.search-btn {
-  background-color: transparent;
-  border: none;
-  padding: 14px 24px;
-  text-align: left;
-}
-
-.search-text {
-  border: none;
-  padding: 0;
-  width: 80px;
-  background-color: transparent;
-}
-
-.header-search__content {
-  box-sizing: border-box;
-}
-
-.header-search__content:hover {
-  background-color: #ebebeb;
-  border-radius: 32px;
-}
-
-.header-search--place {
-  width: 282px;
-}
-
-.header-search--checkin {
-  width: 140px;
-}
-
-.header-search--checkout {
-  width: 140px;
-}
-
-.search-icon {
-  background-color: #ff385c;
-  border: none;
-  border-radius: 100%;
-  padding: 16px;
 }
