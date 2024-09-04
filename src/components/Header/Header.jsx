@@ -27,7 +27,7 @@ function Header() {
 					</div>
 				</div>
 				<div className={cx('header-contents__right')}>
-					<Link to="/" className={cx('find-airbnb')}>당신의 공간을 에어비엔비하세요.</Link>
+					<Link to="/" className={cx('button', 'find-airbnb')}>당신의 공간을 에어비엔비하세요.</Link>
 					<button type="button" className={cx('button', 'icon-earth')}>
 						<EarthIcon width="16" height="16" />
 					</button>

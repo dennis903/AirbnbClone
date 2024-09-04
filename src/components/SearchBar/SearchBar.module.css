@@ -1,5 +1,116 @@
 .searchbar {
 	display: flex;
-	box-shadow: 0 3px 12px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.08);
+	box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
 	border-radius: 32px;
+	max-width: 850px;
+	border: 1px solid #dddddd;
+	overflow: hidden;
+	align-items: center;
+	cursor: pointer;
+}
+
+.searchbar--focused {
+	background-color: #ebebeb;
+}
+
+.searchbar__field {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+	display: flex;
+}
+
+.searchbar__content--focused {
+	box-shadow: 0 6px 20px rgba(0, 0, 0, .2);
+	z-index: 1;
+	border-radius: 32px;
+	background-color: #fff;
+	border: 1px solid #dddddd;
+	box-shadow: 0 3px 12px 0 rgb(0 0 0 / 0.1), 0 1px 2px 0 rgb(0 0 0 / 0.08);
+}
+
+.searchbar__content {
+	width: 100%;
+	padding: 14px 32px;
+	position: relative;
+}
+
+/* .searchbar__content:hover::before {
+	content: '';
+	height: 100%;
+	position: absolute;
+	background-color: #dddddd;
+	width: calc(100% + 31px);
+	top: 0;
+	left: -30px;
+	opacity: .5;
+}
+
+.searchbar__content:hover::after {
+	background-color: #dddddd;
+	border-radius: 32px;
+	content: '';
+	top: 0;
+	bottom: 0;
+} */
+
+.searchbar__title {
+	padding-bottom: 2px;
+	font-size: .75rem;
+	font-weight: 500;
+	line-height: 1rem;
+	color: #222222;
+}
+
+.searchbar__input {
+	width: 100%;
+	border: 0;
+	text-overflow: ellipsis;
+	color: #222222;
+	padding: 0;
+	z-index: 1;
+	background-color: transparent;
+}
+
+.searchbar__input:focus-visible {
+	outline: none;
+}
+
+.line {
+	width: 1px;
+	height: 31px;
+	background-color: #dddddd;
+	margin: 14px 0;
+}
+
+.searchbar__submit {
+	height: 48px;
+	width: 48px;
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	background-color: #ff385c;
+	font-size: 1rem;
+	border-radius: 24px;
+	line-height: 1rem;
+	color: #fff;
+	border: none;
+	margin-right: 5px;
+	gap: 8px;
+}
+
+.searchbar__submit--active {
+	width: 88px;
+}
+
+.searchbar__submit-text {
+	display: none;
+}
+
+.searchbar__submit--active .searchbar__submit-text {
+	display: block;
 }
