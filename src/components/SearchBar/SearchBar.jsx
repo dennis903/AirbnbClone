@@ -7,16 +7,39 @@ const cx = classNames.bind(styles);
 
 function SearchBar() {
 	const [isSearchbarFocused, setIsSearchbarFocused] = useState(false);
+	const [searchFieldOn, setSearchFieldOn] = useState({
+		destination: false,
+		checkIn: false,
+		checkOut: false,
+		guest: false
+	});
+
 	const searchbarRef = useRef(null);
 
-	const handleFocus = () => {
-		setIsSearchbarFocused(true);
+	const handleFocus = (target) => {
+		setSearchFieldOn(() => {
+			return {
+				destination: target === 'destination',
+				checkIn: target === 'checkIn',
+				checkOut: target === 'checkOut',
+				guest: target === 'guest'
+			};
+		});
 	};
 
 	const handleClickOutside = (e) => {
 		if (searchbarRef.current && !searchbarRef.current.contains(e.target)) {
 			setIsSearchbarFocused(false);
 		}
+
+		setSearchFieldOn(() => {
+			return {
+				destination: false,
+				checkIn: false,
+				checkOut: false,
+				guest: false
+			};
+		});
 	};
 
 	useEffect(() => {
@@ -33,9 +56,15 @@ function SearchBar() {
 			className={cx('searchbar', {
 				'searchbar--focused': isSearchbarFocused,
 			})}
+			onClick={() => setIsSearchbarFocused(true)}
 		>
 			<fieldset className={cx('searchbar__field')}>
-				<div className={cx('searchbar__content', 'searchbar__content--focused')} onClick={handleFocus}>
+				<div
+					className={cx('searchbar__content', {
+						'searchbar__content--active': searchFieldOn.destination,
+					})}
+					onClick={() => handleFocus('destination')}
+				>
 					<legend className={cx('searchbar__title')}>여행지</legend>
 					<input
 						type="text"
@@ -44,9 +73,13 @@ function SearchBar() {
 					/>
 				</div>
 			</fieldset>
-			<div className={cx('line')} />
 			<fieldset className={cx('searchbar__field')}>
-				<div className={cx('searchbar__content')} onClick={handleFocus}>
+				<div
+					className={cx('searchbar__content', {
+						'searchbar__content--active': searchFieldOn.checkIn,
+					})}
+					onClick={() => handleFocus('checkIn')}
+				>
 					<legend className={cx('searchbar__title')}>체크인</legend>
 					<input
 						type="text"
@@ -55,8 +88,12 @@ function SearchBar() {
 						placeholder="날짜 추가"
 					/>
 				</div>
-				<div className={cx('line')} />
-				<div className={cx('searchbar__content')} onClick={handleFocus}>
+				<div
+					className={cx('searchbar__content', {
+						'searchbar__content--active': searchFieldOn.checkOut,
+					})}
+					onClick={() => handleFocus('checkOut')}
+				>
 					<legend className={cx('searchbar__title')}>체크아웃</legend>
 					<input
 						type="text"
@@ -66,27 +103,31 @@ function SearchBar() {
 					/>
 				</div>
 			</fieldset>
-			<div className={cx('line')} />
 			<fieldset className={cx('searchbar__field')}>
-				<div className={cx('searchbar__content')} onClick={handleFocus}>
+				<div
+					className={cx('searchbar__content', {
+						'searchbar__content--active': searchFieldOn.guest,
+					})}
+					onClick={() => handleFocus('guest')}
+				>
 					<legend className={cx('searchbar__title')}>여행자</legend>
 					<input
 						type="text"
-						placeholder="게스트 추가"
 						disabled
 						className={cx('searchbar__input')}
+						placeholder="게스트 추가"
 					/>
 				</div>
+				<button
+					type="submit"
+					className={cx('searchbar__submit', {
+						'searchbar__submit--active': isSearchbarFocused,
+					})}
+				>
+					<SearchIcon width="16" height="16" color="#fff" />
+					{isSearchbarFocused && <span className={cx('searchbar__submit-text')}>검색</span>}
+				</button>
 			</fieldset>
-			<button
-				type="submit"
-				className={cx('searchbar__submit', {
-					'searchbar__submit--active': isSearchbarFocused,
-				})}
-			>
-				<SearchIcon width="16" height="16" />
-				<span className={cx('searchbar__submit-text')}>검색</span>
-			</button>
 		</form>
 	);
 }
