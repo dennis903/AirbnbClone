@@ -35,7 +35,7 @@ function SearchBar() {
 				</div>
 				<button type="submit" className={cx('searchbar__submit', 'searchbar__submit--on')}>
 					<SearchIcon width="24" height="24" color="#fff" />
-					검색
+					<span className={cx('submit-title')}>검색</span>
 				</button>
 			</fieldset>
 		</form>
