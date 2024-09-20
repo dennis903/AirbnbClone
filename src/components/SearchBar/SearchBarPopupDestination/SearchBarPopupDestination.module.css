@@ -135,6 +135,7 @@
 
 .worldwide-item--selected .worldwide-item__text {
   position: relative;
+	color: #222222;
 }
 
 .worldwide-item--selected .worldwide-item__text::after {
