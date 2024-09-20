@@ -12,8 +12,6 @@ const cx = classNames.bind(styles);
 
 const SCROLL_AMOUNT = 150;
 
-// 
-
 function SearchBarPopupDestination() {
 	const scrollRef = useRef(null);
 	const [isLeftDisabled, setIsLeftDisabled] = useState(true);
