@@ -142,3 +142,7 @@
 	bottom: -14px;
 	left: 0;
 }
+
+.worldwide-list::-webkit-scrollbar {
+	display: none;
+}

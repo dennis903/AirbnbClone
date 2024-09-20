@@ -1,19 +1,4 @@
 .searchbar {
-<<<<<<< HEAD
-	display: flex;
-	width: 100%;
-	max-width: 850px;
-	border: #dddddd 1px solid;
-	box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
-	border-radius: 32px;
-	margin: 0 auto;
-	align-items: center;
-}
-
-.searchbar--focused {
-	background-color: #ebebeb;
-	box-shadow: 0 3px 12px 0 rgb(0 0 0/0.1),0 1px 2px 0 rgb(0 0 0/0.08);
-=======
   display: flex;
   max-width: 850px;
   border: #dddddd 1px solid;
@@ -25,7 +10,6 @@
 
 .searchbar--on {
 	background-color: #ebebeb;
->>>>>>> ea718b1c348180c0769f91b24e10fd06d753d82f
 }
 
 .searchbar__title {
@@ -37,43 +21,6 @@
 }
 
 .searchbar__field {
-<<<<<<< HEAD
-	flex: 1;
-	white-space: nowrap;
-	overflow: hidden;
-	position: relative;
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-}
-
-.searchbar__field:nth-child(2)::before {
-	content: '';
-	width: 1px;
-	height: 24px;
-	background-color: #dddddd;
-	position: absolute;
-	left: 0;
-}
-
-.searchbar--focused .searchbar__field:nth-child(2)::before {
-	background-color: transparent;
-}
-
-.searchbar__field:nth-child(2)::after,
-.searchbar__field:nth-child(2) .searchbar__content:first-child::after {
-	content: '';
-	width: 1px;
-	height: 24px;
-	background-color: #dddddd;
-	position: absolute;
-	right: 0;
-}
-
-.searchbar--focused .searchbar__field:nth-child(2)::after,
-.searchbar--focused .searchbar__field:nth-child(2) .searchbar__content:first-child::after {
-	background-color: transparent;
-=======
   display: flex;
 	flex: 1;
 	align-items: center;
@@ -82,7 +29,6 @@
 
 .searchbar__center .searchbar__content {
 	width: 140px;
->>>>>>> ea718b1c348180c0769f91b24e10fd06d753d82f
 }
 
 .searchbar__field:first-child .searchbar__content {
@@ -90,36 +36,16 @@
 }
 
 .searchbar__submit {
-<<<<<<< HEAD
-	position: absolute;
-	width: 48px;
-	height: 48px;
-	background-color: #ff385c;
-	border-radius: 24px;
-=======
 	right: 0;
 	position: absolute;
   width: 48px;
   height: 48px;
   background-color: #ff385c;
   border-radius: 24px;
->>>>>>> ea718b1c348180c0769f91b24e10fd06d753d82f
 	border: none;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-<<<<<<< HEAD
-	cursor: pointer;
-	margin-right: 9px;
-	gap: 8px;
-	color: #fff;
-	font-size: 1rem;
-	transition: width .3s;
-	right: 0;
-}
-
-.searchbar__submit--active {
-=======
 	gap: 8px;
 	cursor: pointer;
 	margin-right: 9px;
@@ -127,62 +53,16 @@
 }
 
 .searchbar__submit--on {
->>>>>>> ea718b1c348180c0769f91b24e10fd06d753d82f
 	width: 87px;
 }
 
 .searchbar__field:last-child {
 	display: flex;
 	justify-content: space-between;
-<<<<<<< HEAD
-	align-items: center;
-=======
->>>>>>> ea718b1c348180c0769f91b24e10fd06d753d82f
 }
 
 .searchbar__content {
 	width: 100%;
-<<<<<<< HEAD
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	padding: 14px 32px;
-}
-
-.searchbar__content--active {
-	background-color: #fff;
-	border-radius: 32px;
-}
-
-/* .searchbar__content--hover-center {
-	background-color: rgba(0, 0, 0, 0.05);
-	border-radius: 32px;
-}
-
-.searchbar__content--hover-right::before {
-	content: '';
-	position: absolute;
-	width: 120%;
-	height: 100%;
-	left: 0;
-	border-radius: 32px;
-	background-color: rgba(0, 0, 0, 0.05);
-}
-
-.searchbar__content--hover-left::before {
-	content: '';
-	position: absolute;
-	width: 120%;
-	height: 100%;
-	right: 0;
-	border-radius: 32px;
-	background-color: rgba(0, 0, 0, 0.05);
-} */
-
-.searchbar__field:nth-child(2) .searchbar__content {
-	width: 140px;
-=======
 	padding: 14px 24px;
 }
 
@@ -204,7 +84,6 @@
 .searchbar--on .searchbar__content:hover {
 	background-color: rgba(0, 0, 0, 0.08);
 	border-radius: 32px;
->>>>>>> ea718b1c348180c0769f91b24e10fd06d753d82f
 }
 
 .line {
@@ -219,11 +98,7 @@
 	background-color: transparent;
 	padding: 0;
 	line-height: 1.125rem;
-<<<<<<< HEAD
-	font-size: 0.875rem;
-=======
   font-size: 0.875rem;
->>>>>>> ea718b1c348180c0769f91b24e10fd06d753d82f
 	font-weight: 500;
 	color: #222222;
 }
@@ -236,8 +111,6 @@
 .searchbar__input:focus-visible {
 	outline: none;
 }
-<<<<<<< HEAD
-=======
 
 .search-icon {
   background-color: #ff385c;
@@ -250,4 +123,3 @@
 	color: #fff;
 	font-size: 1rem;
 }
->>>>>>> ea718b1c348180c0769f91b24e10fd06d753d82f

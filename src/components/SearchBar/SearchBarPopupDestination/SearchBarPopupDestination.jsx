@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './SearchBarPopupDestination.module.css';
 
@@ -9,8 +10,42 @@ import { ReactComponent as ArrowLeft } from '@/assets/img/icon/arrow-left.svg';
 const cx = classNames.bind(styles);
 
 function SearchBarPopupDestination() {
-	// 1. 스크롤의 왼쪽 끝이거나 오른쪽 끝이면 각각 화살표를 비활성화
-	// 2. 화살표를 클릭하면 스크롤이 좌우로 이동
+	const [isLeftEnd, setIsLeftEnd] = useState(true);
+	const [isRightEnd, setIsRightEnd] = useState(false);
+	const scrollRef = useRef(null);
+
+	const handleScroll = (direction) => {
+		const scrollAmount = 151;
+
+		if (direction === 'left') {
+			scrollRef.current.scrollLeft -= scrollAmount;
+		} else if (direction === 'right') {
+			scrollRef.current.scrollLeft += scrollAmount;
+		}
+	};
+
+	const handleScrollCheck = () => {
+		if (scrollRef.current) {
+			const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+
+			setIsLeftEnd(scrollLeft === 0);
+			setIsRightEnd(Math.round(scrollLeft + clientWidth) >= scrollWidth);
+		}
+	};
+
+	useEffect(() => {
+		const scrollElement = scrollRef.current;
+
+		if (scrollElement) {
+			scrollElement.addEventListener('scroll', handleScrollCheck);
+		}
+
+		return () => {
+			if (scrollElement) {
+				scrollElement.removeEventListener('scroll', handleScrollCheck);
+			}
+		}
+	}, []);
 
 	return (
 		<SearchBarPopupLayout width="475px">
@@ -46,9 +81,7 @@ function SearchBarPopupDestination() {
 			<div className={cx('searchbar-popup__section')}>
 				<h2 className={cx('searchbar-popup__title')}>한국</h2>
 				<div className={cx('locals')}>
-					<button type="button" className={cx('local-btn', {
-						'local-btn--active': true
-					})}>서울</button>
+					<button type="button" className={cx('local-btn')}>서울</button>
 					<button type="button" className={cx('local-btn')}>부산</button>
 					<button type="button" className={cx('local-btn')}>속초</button>
 					<button type="button" className={cx('local-btn')}>강릉</button>
@@ -64,10 +97,14 @@ function SearchBarPopupDestination() {
 			</div>
 			<div className={cx('searchbar-popup__section')}>
 				<nav className={cx('worldwide-nav')}>
-					<div className={cx('worldwide-arrow', 'worldwide-arrow--left')}>
-						<ArrowLeft />
-					</div>
-					<ul className={cx('worldwide-list')}>
+					{
+						!isLeftEnd &&
+						<div className={cx('worldwide-arrow', 'worldwide-arrow--left')} onClick={() => handleScroll('left')}>
+							<ArrowLeft />
+						</div>
+					}
+
+					<ul className={cx('worldwide-list')} ref={scrollRef}>
 						<li className={cx('worldwide-item', 'worldwide-item--selected')}>
 							<span className={cx('worldwide-item__text')}>전 세계</span>
 						</li>
@@ -79,10 +116,16 @@ function SearchBarPopupDestination() {
 						<li className={cx('worldwide-item')}>기타 아시아 지역</li>
 						<li className={cx('worldwide-item')}>아프리카</li>
 					</ul>
-					<div className={cx('worldwide-arrow', 'worldwide-arrow--right')}>
-						<ArrowRight />
-					</div>
+					{
+						!isRightEnd &&
+						<div className={cx('worldwide-arrow', 'worldwide-arrow--right')} onClick={() => handleScroll('right')}>
+							<ArrowRight />
+						</div>
+					}
 				</nav>
+				<div className={cx('locals')}>
+
+				</div>
 			</div>
 		</SearchBarPopupLayout >
 	)
