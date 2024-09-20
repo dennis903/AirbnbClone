@@ -114,6 +114,10 @@
   overflow: auto;
 }
 
+.worldwide-list::-webkit-scrollbar {
+  display: none;
+}
+
 .worldwide-item {
   font-size: 0.875rem;
   font-weight: 500;

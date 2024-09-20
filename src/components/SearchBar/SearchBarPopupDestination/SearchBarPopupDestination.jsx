@@ -1,3 +1,4 @@
+import React, { useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './SearchBarPopupDestination.module.css';
 
@@ -11,6 +12,13 @@ const cx = classNames.bind(styles);
 function SearchBarPopupDestination() {
 	// 1. 스크롤의 왼쪽 끝이거나 오른쪽 끝이면 각각 화살표를 비활성화
 	// 2. 화살표를 클릭하면 스크롤이 좌우로 이동
+
+	// 너무 어려워요 살려주세요 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
+	const scrollRef = useRef(null);
+	const [isLeftDisabled, setIsLeftDisabled] = useState();
+	const [isRightDisabled, setIsRightDisabled] = useState();
+
+
 
 	return (
 		<SearchBarPopupLayout width="475px">
@@ -64,7 +72,7 @@ function SearchBarPopupDestination() {
 			</div>
 			<div className={cx('searchbar-popup__section')}>
 				<nav className={cx('worldwide-nav')}>
-					<div className={cx('worldwide-arrow', 'worldwide-arrow--left')}>
+					<div className={cx('worldwide-arrow', 'worldwide-arrow--left')} ref={scrollRef}>
 						<ArrowLeft />
 					</div>
 					<ul className={cx('worldwide-list')}>
@@ -79,7 +87,7 @@ function SearchBarPopupDestination() {
 						<li className={cx('worldwide-item')}>기타 아시아 지역</li>
 						<li className={cx('worldwide-item')}>아프리카</li>
 					</ul>
-					<div className={cx('worldwide-arrow', 'worldwide-arrow--right')}>
+					<div className={cx('worldwide-arrow', 'worldwide-arrow--right')} ref={scrollRef}>
 						<ArrowRight />
 					</div>
 				</nav>
