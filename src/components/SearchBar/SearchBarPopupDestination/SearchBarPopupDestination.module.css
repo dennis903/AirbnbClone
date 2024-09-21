@@ -114,6 +114,10 @@
   overflow: auto;
 }
 
+.worldwide-list::-webkit-scrollbar {
+  display: none;
+}
+
 .worldwide-item {
   font-size: 0.875rem;
   font-weight: 500;
@@ -131,6 +135,7 @@
 
 .worldwide-item--selected .worldwide-item__text {
   position: relative;
+	color: #222222;
 }
 
 .worldwide-item--selected .worldwide-item__text::after {
@@ -141,8 +146,4 @@
 	position: absolute;
 	bottom: -14px;
 	left: 0;
-}
-
-.worldwide-list::-webkit-scrollbar {
-	display: none;
 }
