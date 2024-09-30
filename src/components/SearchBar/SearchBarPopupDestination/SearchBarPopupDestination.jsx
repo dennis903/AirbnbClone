@@ -74,7 +74,7 @@ function SearchBarPopupDestination() {
 	};
 
 	return (
-		<SearchBarPopupLayout width="475px">
+		<div className={cx('searchbar-popup')}>
 			<div className={cx('searchbar-popup__section')}>
 				<h2 className={cx('searchbar-popup__title')}>지역으로 검색하기</h2>
 				<div className={cx('continentals')}>
@@ -173,7 +173,7 @@ function SearchBarPopupDestination() {
 					))}
 				</div>
 			</div>
-		</SearchBarPopupLayout >
+		</div>
 	)
 }
 
