@@ -2,6 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import classnames from 'classnames/bind';
 
 import SearchBarPopupDestination from './SearchBarPopupDestination/SearchBarPopupDestination';
+import SearchBarPopupGuest from './SearchBarPopupGuest/SearchBarPopupGuest';
+
+
 import { ReactComponent as SearchIcon } from '@/assets/img/icon/search.svg';
 
 import styles from './SearchBar.module.css';
@@ -87,6 +90,7 @@ function SearchBar() {
 					<h2 className={cx('searchbar__title')}>여행자</h2>
 					<input type="text" disabled className={cx('searchbar__input')} placeholder="게스트 추가" />
 				</div>
+				<SearchBarPopupGuest />
 				<button
 					type="submit"
 					className={cx('searchbar__submit', {
