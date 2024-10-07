@@ -28,7 +28,9 @@ function Header() {
 				</div>
 				<div className={cx('header-content__center')}>
 					<button type="button" className={cx('header-btn')}>숙소</button>
-					<button type="button" className={cx('header-btn')}>체험</button>
+					<button type="button" className={cx('header-btn', {
+						'header-btn--disabled': true
+					})}>체험</button>
 				</div>
 				<div className={cx('header-content__right')}>
 					<Link to="/" className={cx('header-btn', 'header-btn--link')}>당신의 공간을 에어비앤비하세요</Link>

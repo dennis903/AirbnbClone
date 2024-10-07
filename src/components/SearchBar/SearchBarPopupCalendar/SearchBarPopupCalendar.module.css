@@ -1,0 +1,71 @@
+.searchbar-popup {
+  border-radius: 32px;
+  background-color: #fff;
+  box-shadow: 0 3px 12px 0 rgb(0 0 0/0.15);
+  position: absolute;
+  top: 75px;
+  left: 50%;
+	transform: translateX(-50%);
+  z-index: 1;
+  padding: 32px 24px;
+	width: 845px;
+}
+
+.searchbar-popup__nav {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.searchbar-popup__nav-list {
+	min-width: 303px;
+	max-width: 400px;
+	background-color: #ebebeb;
+	border-radius: 100px;
+	display: flex;
+	align-items: center;
+	padding: 0 4px;
+}
+
+.searchbar-popup__nav-item {
+	display: block;
+	flex: 1;
+	text-align: center;
+	padding: 8px 12px;
+	margin: 4px 2px;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+.searchbar-popup__nav-item:first-child {
+	margin-left: 0;
+}
+
+.searchbar-popup__nav-item:last-child {
+	margin-right: 0;
+}
+
+.searchbar-popup__nav-item--on {
+	background-color: #fff;
+	box-shadow: 0 1px 12px 0 rgb(0 0 0/0.15);
+	cursor: default;
+}
+
+.searchbar-popup__nav-item--on .searchbar-popup__btn {
+	cursor: default;
+}
+
+.searchbar-popup__nav-item:not(.searchbar-popup__nav-item--on):hover {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+.searchbar-popup__btn {
+	line-height: 1.125;
+	font-size: .875rem;
+	font-weight: 400;
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+

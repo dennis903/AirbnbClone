@@ -3,8 +3,6 @@ import { useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './SearchBarPopupDestination.module.css';
 
-import SearchBarPopupLayout from '../SearchBarPopupLayout/SearchBarPopupLayout';
-
 import { ReactComponent as ArrowRight } from '@/assets/img/icon/arrow-right.svg';
 import { ReactComponent as ArrowLeft } from '@/assets/img/icon/arrow-left.svg';
 
