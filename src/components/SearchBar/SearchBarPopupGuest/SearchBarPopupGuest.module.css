@@ -1,0 +1,62 @@
+.searchbar-popup {
+  border-radius: 32px;
+  background-color: #fff;
+  box-shadow: 0 3px 12px 0 rgb(0 0 0/0.15);
+  position: absolute;
+  top: 75px;
+  right: 0;
+  z-index: 1;
+  padding: 16px 32px;
+	width: 417px;
+}
+
+.searchbar-popup__section {
+  display: flex;
+  padding: 24px 4px 24px 0;
+  justify-content: space-between;
+  border-bottom: solid 1px #ebebeb;
+}
+
+.searchbar-popup__section:last-child {
+  border: none;
+}
+
+.searchbar-guest__titlebox {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchbar-guest__title {
+  font-size: 1rem;
+	padding-bottom: 8px;
+}
+
+.searchbar-guest__subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6a6a6a;
+}
+
+.counter-btnbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 104px;
+  height: 32px;
+}
+
+.counter-btn {
+  border: 1px solid #b0b0b0;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.counter-btn--disabled {
+	color: rgb(235, 235, 235);
+	border: 1px solid rgb(235, 235, 235);
+	cursor: not-allowed;
+}
+/* 버튼 활성화 border #222222 */
+

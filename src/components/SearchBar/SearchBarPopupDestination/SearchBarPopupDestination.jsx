@@ -64,7 +64,7 @@ function SearchBarPopupDestination() {
 			setIsLeftDisabled(false);
 		}
 
-		if (Math.ceil(scrollRef.current.scrollLeft + scrollRef.current.offsetWidth) === scrollRef.current.scrollWidth) {
+		if (Math.ceil(scrollRef.current.scrollLeft + scrollRef.current.offsetWidth) === scrollRef.current.scrollWidth - 1) {
 			setIsRightDisabled(true);
 		} else {
 			setIsRightDisabled(false);
@@ -76,7 +76,7 @@ function SearchBarPopupDestination() {
 	};
 
 	return (
-		<SearchBarPopupLayout width="475px">
+		<div className={cx('searchbar-popup')}>
 			<div className={cx('searchbar-popup__section')}>
 				<h2 className={cx('searchbar-popup__title')}>지역으로 검색하기</h2>
 				<div className={cx('continentals')}>
@@ -174,8 +174,8 @@ function SearchBarPopupDestination() {
 						</button>
 					))}
 				</div>
-			</div >
-		</SearchBarPopupLayout >
+			</div>
+		</div>
 	)
 }
 
