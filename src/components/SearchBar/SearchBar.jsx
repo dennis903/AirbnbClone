@@ -4,7 +4,6 @@ import classnames from 'classnames/bind';
 import SearchBarPopupDestination from './SearchBarPopupDestination/SearchBarPopupDestination';
 import SearchBarPopupGuest from './SearchBarPopupGuest/SearchBarPopupGuest';
 
-
 import { ReactComponent as SearchIcon } from '@/assets/img/icon/search.svg';
 
 import styles from './SearchBar.module.css';
@@ -21,6 +20,11 @@ function SearchBar() {
 		checkOut: false,
 		guest: false
 	});
+	
+
+
+	const totalGuests = guestCount.adult + guestCount.kids + guestCount.child + guestCount.animal;
+	
 
 	// 함수 선언
 	const handleClickSearchForm = () => {
@@ -87,11 +91,11 @@ function SearchBar() {
 			<fieldset className={cx('searchbar__field')}>
 				<div className={cx('searchbar__content', { 'searchbar__content--on': isContentOn.guest })} onClick={() => handleClickSearchContent('guest')}>
 					<h2 className={cx('searchbar__title')}>여행자</h2>
-					<input type="text" disabled className={cx('searchbar__input')} placeholder="게스트 추가" />
+					<input type="text" disabled className={cx('searchbar__input')} placeholder={totalGuests === 0 ? '게스트 추가' : `게스트 ${guestCount} 명 추가`} />
 				</div>
-				<SearchBarPopupGuest />
+				<SearchBarPopupGuest guestCount={guestCount} setGuestCount={setGuestCount}/>
 				<button
-					type="submit"
+					type="button"
 					className={cx('searchbar__submit', {
 						'searchbar__submit--on': isSearchBarOn
 					})}
