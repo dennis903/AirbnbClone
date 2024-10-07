@@ -1,26 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './SearchBarPopupGuest.module.css';
 
+import { useSearchBarStore } from '@/store';
 import { ReactComponent as Plus } from '@/assets/img/icon/plus.svg';
 import { ReactComponent as Minus } from '@/assets/img/icon/minus.svg';
 
 const cx = classNames.bind(styles);
 
-function SearchBarPopupGuest({}) {
+function SearchBarPopupGuest(props) {
+	// 전역 변수
+	const guestCount = useSearchBarStore((state) => state.guestCount);
+	const setGuestCount = useSearchBarStore((state) => state.setGuestCount);
 	// 지역 함수
 	const MAX_COUNT = Object.freeze({
 		adultAndKid: 16,
 		child: 5,
 		animal: 5
-	});
-
-	// hooks
-	const [guestCount, setGuestCount] = useState({
-		adult: 0,
-		kids: 0,
-		child: 0,
-		animal: 0
 	});
 
 	// event handler
@@ -43,21 +39,37 @@ function SearchBarPopupGuest({}) {
 			setGuestCount({
 				...guestCount,
 				adult: guestCount.adult + 1
-			})
+			});
 		}
 
-		setGuestCount((prevCount) => ({
-			...prevCount,
-			[type]: prevCount[type] + 1
-		}));
+		setGuestCount({
+			...guestCount,
+			[type]: guestCount[type] + 1
+		});
 	};
 
 	const handleClickMinus = (type) => {
-		setGuestCount((prevCount) => ({
-			...prevCount,
-			[type]: prevCount[type] > 0 ? prevCount[type] - 1 : 0
-		}));
+		setGuestCount({
+			...guestCount,
+			[type]: guestCount[type] > 0 ? guestCount[type] - 1 : 0
+		});
 	};
+
+	useEffect(() => {
+		let guestInputValue = '';
+
+		if (guestCount.adult + guestCount.kids > 0) {
+			guestInputValue += `게스트 ${guestCount.adult + guestCount.kids}명`;
+		}
+		if (guestCount.child > 0) {
+			guestInputValue += `, 유아 ${guestCount.child}명`;
+		}
+		if (guestCount.animal > 0) {
+			guestInputValue += `, 반려동물 ${guestCount.animal}마리`;
+		}
+
+		props.setGuestInputValue(guestInputValue);
+	}, [guestCount]);
 
 	return (
 		<div className={cx('searchbar-popup')}>
@@ -98,9 +110,9 @@ function SearchBarPopupGuest({}) {
 					</button>
 					<span>{guestCount.kids}</span>
 					<button
-					type="button" className={cx('counter-btn', {
-						'counter-btn--disabled': (guestCount.adult + guestCount.kids) === MAX_COUNT.adultAndKid
-					})} onClick={() => handleClickPlus('kids')}>
+						type="button" className={cx('counter-btn', {
+							'counter-btn--disabled': (guestCount.adult + guestCount.kids) === MAX_COUNT.adultAndKid
+						})} onClick={() => handleClickPlus('kids')}>
 						<Plus />
 					</button>
 				</div>
