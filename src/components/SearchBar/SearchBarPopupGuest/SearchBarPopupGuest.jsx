@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './SearchBarPopupGuest.module.css';
 
+import { useSearchBarStore } from '@/store';
 import { ReactComponent as Plus } from '@/assets/img/icon/plus.svg';
 import { ReactComponent as Minus } from '@/assets/img/icon/minus.svg';
 
 const cx = classNames.bind(styles);
 
-function SearchBarPopupGuest() {
+function SearchBarPopupGuest(props) {
+	// 전역 변수
+	const guestCount = useSearchBarStore((state) => state.guestCount);
+	const setGuestCount = useSearchBarStore((state) => state.setGuestCount);
 	// 지역 함수
 	const MAX_COUNT = Object.freeze({
 		adultAndKid: 16,
@@ -15,49 +19,57 @@ function SearchBarPopupGuest() {
 		animal: 5
 	});
 
-	// hooks
-	const [isCount, setIsCount] = useState({
-		adult: 0,
-		kids: 0,
-		child: 0,
-		animal: 0
-	});
-
 	// event handler
 	const handleClickPlus = (type) => {
 		if (type === 'adult' || type === 'kids') {
-			if (isCount.adult + isCount.kids === MAX_COUNT.adultAndKid) {
+			if (guestCount.adult + guestCount.kids === MAX_COUNT.adultAndKid) {
 				return;
 			}
 		}
 
-		if (type === 'child' && isCount.child === MAX_COUNT.child) {
+		if (type === 'child' && guestCount.child === MAX_COUNT.child) {
 			return;
 		}
 
-		if (type === 'animal' && isCount.animal === MAX_COUNT.animal) {
+		if (type === 'animal' && guestCount.animal === MAX_COUNT.animal) {
 			return;
 		}
 
-		if (isCount.adult === 0 && type !== 'adult') {
-			setIsCount({
-				...isCount,
-				adult: isCount.adult + 1
-			})
+		if (guestCount.adult === 0 && type !== 'adult') {
+			setGuestCount({
+				...guestCount,
+				adult: guestCount.adult + 1
+			});
 		}
 
-		setIsCount((prevCount) => ({
-			...prevCount,
-			[type]: prevCount[type] + 1
-		}));
+		setGuestCount({
+			...guestCount,
+			[type]: guestCount[type] + 1
+		});
 	};
 
 	const handleClickMinus = (type) => {
-		setIsCount((prevCount) => ({
-			...prevCount,
-			[type]: prevCount[type] > 0 ? prevCount[type] - 1 : 0
-		}));
+		setGuestCount({
+			...guestCount,
+			[type]: guestCount[type] > 0 ? guestCount[type] - 1 : 0
+		});
 	};
+
+	useEffect(() => {
+		let guestInputValue = '';
+
+		if (guestCount.adult + guestCount.kids > 0) {
+			guestInputValue += `게스트 ${guestCount.adult + guestCount.kids}명`;
+		}
+		if (guestCount.child > 0) {
+			guestInputValue += `, 유아 ${guestCount.child}명`;
+		}
+		if (guestCount.animal > 0) {
+			guestInputValue += `, 반려동물 ${guestCount.animal}마리`;
+		}
+
+		props.setGuestInputValue(guestInputValue);
+	}, [guestCount]);
 
 	return (
 		<div className={cx('searchbar-popup')}>
@@ -69,17 +81,17 @@ function SearchBarPopupGuest() {
 				<div className={cx('counter-btnbox')}>
 					<button
 						type="button"
-						disabled={(isCount.adult === 0 || (isCount.adult === 1 && (isCount.kids || isCount.child || isCount.animal)))}
+						disabled={(guestCount.adult === 0 || (guestCount.adult === 1 && (guestCount.kids || guestCount.child || guestCount.animal)))}
 						className={cx('counter-btn', {
-							'counter-btn--disabled': (isCount.adult === 0 || (isCount.adult === 1 && (isCount.kids || isCount.child || isCount.animal)))
+							'counter-btn--disabled': (guestCount.adult === 0 || (guestCount.adult === 1 && (guestCount.kids || guestCount.child || guestCount.animal)))
 						})}
 						onClick={() => handleClickMinus('adult')}
 					>
 						<Minus />
 					</button>
-					<span>{isCount.adult}</span>
+					<span>{guestCount.adult}</span>
 					<button type="button" className={cx('counter-btn', {
-						'counter-btn--disabled': (isCount.adult + isCount.kids) === MAX_COUNT.adultAndKid
+						'counter-btn--disabled': (guestCount.adult + guestCount.kids) === MAX_COUNT.adultAndKid
 					})} onClick={() => handleClickPlus('adult')}>
 						<Plus />
 					</button>
@@ -92,14 +104,15 @@ function SearchBarPopupGuest() {
 				</div>
 				<div className={cx('counter-btnbox')}>
 					<button type="button" className={cx('counter-btn', {
-						'counter-btn--disabled': isCount.kids === 0
+						'counter-btn--disabled': guestCount.kids === 0
 					})} onClick={() => handleClickMinus('kids')}>
 						<Minus />
 					</button>
-					<span>{isCount.kids}</span>
-					<button type="button" className={cx('counter-btn', {
-						'counter-btn--disabled': (isCount.adult + isCount.kids) === MAX_COUNT.adultAndKid
-					})} onClick={() => handleClickPlus('kids')}>
+					<span>{guestCount.kids}</span>
+					<button
+						type="button" className={cx('counter-btn', {
+							'counter-btn--disabled': (guestCount.adult + guestCount.kids) === MAX_COUNT.adultAndKid
+						})} onClick={() => handleClickPlus('kids')}>
 						<Plus />
 					</button>
 				</div>
@@ -111,13 +124,13 @@ function SearchBarPopupGuest() {
 				</div>
 				<div className={cx('counter-btnbox')}>
 					<button type="button" className={cx('counter-btn', {
-						'counter-btn--disabled': isCount.child === 0
+						'counter-btn--disabled': guestCount.child === 0
 					})} onClick={() => handleClickMinus('child')}>
 						<Minus />
 					</button>
-					<span>{isCount.child}</span>
+					<span>{guestCount.child}</span>
 					<button type="button" className={cx('counter-btn', {
-						'counter-btn--disabled': isCount.child === MAX_COUNT.child
+						'counter-btn--disabled': guestCount.child === MAX_COUNT.child
 					})} onClick={() => handleClickPlus('child')}>
 						<Plus />
 					</button>
@@ -130,13 +143,13 @@ function SearchBarPopupGuest() {
 				</div>
 				<div className={cx('counter-btnbox')}>
 					<button type="button" className={cx('counter-btn', {
-						'counter-btn--disabled': isCount.animal === 0
+						'counter-btn--disabled': guestCount.animal === 0
 					})} onClick={() => handleClickMinus('animal')}>
 						<Minus />
 					</button>
-					<span>{isCount.animal}</span>
+					<span>{guestCount.animal}</span>
 					<button type="button" className={cx('counter-btn', {
-						'counter-btn--disabled': isCount.animal === MAX_COUNT.animal
+						'counter-btn--disabled': guestCount.animal === MAX_COUNT.animal
 					})} onClick={() => handleClickPlus('animal')}>
 						<Plus />
 					</button>

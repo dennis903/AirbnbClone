@@ -103,6 +103,13 @@
 	color: #222222;
 }
 
+.searchbar__input--guest {
+	width: 150px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
 .searchbar__input::placeholder {
 	color: #9b9b9b;
 	font-weight: 400;

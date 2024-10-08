@@ -21,6 +21,13 @@ function SearchBar() {
 		checkOut: false,
 		guest: false
 	});
+	const [guestInputValue, setGuestInputValue] = useState('');
+	const [guestCount, setGuestCount] = useState({
+		adult: 0,
+		kids: 0,
+		child: 0,
+		animal: 0
+	});
 
 	// 함수 선언
 	const handleClickSearchForm = () => {
@@ -89,11 +96,16 @@ function SearchBar() {
 			<fieldset className={cx('searchbar__field')}>
 				<div className={cx('searchbar__content', { 'searchbar__content--on': isContentOn.guest })} onClick={() => handleClickSearchContent('guest')}>
 					<h2 className={cx('searchbar__title')}>여행자</h2>
-					<input type="text" disabled className={cx('searchbar__input')} placeholder="게스트 추가" />
+					<input type="text" disabled className={cx('searchbar__input', 'searchbar__input--guest')} value={guestInputValue} placeholder="게스트 추가" />
 				</div>
-				{isContentOn.guest && <SearchBarPopupGuest />}
+				{isContentOn.guest &&
+					<SearchBarPopupGuest
+						setGuestInputValue={setGuestInputValue}
+						guestCount={guestCount}
+						setGuestCount={setGuestCount}
+					/>}
 				<button
-					type="submit"
+					type="button"
 					className={cx('searchbar__submit', {
 						'searchbar__submit--on': isSearchBarOn
 					})}
