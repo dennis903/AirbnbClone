@@ -3,6 +3,7 @@ import classnames from 'classnames/bind';
 
 import SearchBarPopupDestination from './SearchBarPopupDestination/SearchBarPopupDestination';
 import SearchBarPopupGuest from './SearchBarPopupGuest/SearchBarPopupGuest';
+import SearchBarPopupCalendar from './SearchBarPopupCalendar/SearchBarPopupCalendar';
 
 import { ReactComponent as SearchIcon } from '@/assets/img/icon/search.svg';
 
@@ -63,6 +64,11 @@ function SearchBar() {
 		}
 	}, []);
 
+	// 2024.10.09 과제
+	// 1. SearchBarCalendar 바깥 클릭 시 달력창 닫히게 하기
+	// 2. 체크인, 체크아웃 날짜 선택 시 input에 날짜 표시하기
+	// 3. 체크인 선택하면 체크아웃으로 넘어가기
+
 	return (
 		<form
 			ref={searchFormRef}
@@ -89,6 +95,7 @@ function SearchBar() {
 					<h2 className={cx('searchbar__title')}>체크아웃</h2>
 					<input type="text" disabled className={cx('searchbar__input')} placeholder="날짜 추가" />
 				</div>
+				{true && <SearchBarPopupCalendar />}
 			</fieldset>
 			<div className={cx('line')} />
 			<fieldset className={cx('searchbar__field')}>

@@ -1,0 +1,48 @@
+.searchbar-popup {
+  width: 845px;
+  border-radius: 32px;
+  background-color: #fff;
+  box-shadow: 0 3px 12px 0 rgb(0 0 0/0.15);
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  padding: 32px;
+}
+
+.searchbar-calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchbar-calendar__nav {
+  background-color: #ebebeb;
+  border-radius: 100px;
+  width: fit-content;
+  padding: 0 2px;
+}
+
+.searchbar-calendar__nav-btn {
+  border: none;
+  background-color: transparent;
+  border-radius: 100px;
+  font-weight: 500;
+  line-height: 1.125rem;
+  font-size: 0.875rem;
+  padding: 8px 12px;
+  margin: 4px 2px;
+  width: 99px;
+	cursor: pointer;
+}
+
+.searchbar-calendar__nav-btn:not(.searchbar-calendar__nav-btn--active):hover {
+  background-color: #dddddd;
+}
+
+.searchbar-calendar__nav-btn--active {
+	background-color: #fff;
+	border: 1px solid#dddddd;
+	cursor: default;
+}
