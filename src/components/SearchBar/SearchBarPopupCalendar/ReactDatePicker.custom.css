@@ -72,7 +72,8 @@ h2.react-datepicker__current-month {
 
 .react-datepicker__day--keyboard-selected:not([aria-disabled=true]):hover,
 .react-datepicker__day--range-start,
-.react-datepicker__day--range-end {
+.react-datepicker__day--range-end,
+.react-datepicker__day--selected {
 	border-radius: 50%;
 	background-color: #222222;
 	color: #fff;
