@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './SearchBarPopupCalendar.module.css';
 import classNames from 'classnames/bind';
 import DatePicker from 'react-datepicker';
@@ -10,13 +10,13 @@ import './ReactDatePicker.custom.css';
 
 const cx = classNames.bind(styles);
 
-function SearchBarPopupCalendar() {
+function SearchBarPopupCalendar(props) {
 	const [calendarNavOn, setCalendarNavOn] = useState({
 		date: true,
 		month: false,
 		flex: false
 	});
-	const [startDate, setStartDate] = useState(new Date());
+	const [startDate, setStartDate] = useState(null);
 	const [endDate, setEndDate] = useState(null);
 
 	const handleClickCalendarNav = (type) => {
@@ -32,6 +32,9 @@ function SearchBarPopupCalendar() {
 		setStartDate(start);
 		setEndDate(end);
 	};
+
+	useEffect(() => {
+		props.setStartDate(startDate), props.setEndDate(endDate)}, {startDate, endDate});
 
 	return (
 		<div className={cx('searchbar-popup')}>

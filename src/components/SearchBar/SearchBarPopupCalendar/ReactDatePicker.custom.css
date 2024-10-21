@@ -113,3 +113,9 @@ h2.react-datepicker__current-month {
 	width: 7px;
 	height: 7px;
 }
+
+.react-datepicker__day--selected {
+	border-radius: 50%;
+  background-color: #222222;
+  color: #fff;
+}
