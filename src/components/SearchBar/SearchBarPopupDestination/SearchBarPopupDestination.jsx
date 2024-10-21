@@ -177,6 +177,4 @@ function SearchBarPopupDestination() {
 	)
 }
 
-export default SearchBarPopupDestination
-
-
+export default SearchBarPopupDestination;

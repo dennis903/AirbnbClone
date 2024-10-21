@@ -4,6 +4,7 @@
   width: 100%;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #ebebeb;
+	top: 0;
 }
 
 .header-content {
@@ -20,6 +21,7 @@
   position: relative;
   padding: 12px 14px;
   font-size: 1rem;
+	cursor: pointer;
 }
 
 .header-btn:hover::before {
@@ -55,6 +57,7 @@
 .header-content__right {
   display: flex;
   align-items: center;
+	position: relative;
 }
 
 .myinfo-btn {
@@ -67,8 +70,47 @@
   align-items: center;
   gap: 12px;
   transition: box-shadow 0.3s;
+	cursor: pointer;
 }
 
 .myinfo-btn:hover {
   box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+}
+
+.header-myinfo {
+	position: absolute;
+	z-index: 10;
+	background-color: #ffffff;
+	top: 60px;
+	right: 0;
+	width: 240px;
+	border-radius: 12px;
+	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+}
+
+.header-myinfo__item {
+	font-weight: 500;
+	line-height: 1.125rem;
+	font-size: 0.875rem;
+}
+
+.header-myinfo__item:hover {
+	background-color: #f7f7f7;
+}
+
+.header-myinfo__link {
+	padding: 12px 16px;
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+	color: #222222;
+}
+
+.header-myinfo__list {
+	padding: 8px 0 8px 0;
+}
+
+.header-myinfo__list:first-child {
+	border-bottom: 1px solid #dddddd;
 }

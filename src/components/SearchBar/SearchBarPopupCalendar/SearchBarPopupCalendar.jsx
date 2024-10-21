@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import { ko } from 'date-fns/locale';
 import styles from './SearchBarPopupCalendar.module.css';
 import classNames from 'classnames/bind';
+import CircularSlider from '@fseehawer/react-circular-slider';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './ReactDatePicker.custom.css';
@@ -30,6 +31,10 @@ function SearchBarPopupCalendar() {
 			month: type === 'month',
 			flex: type === 'flex'
 		});
+	}
+
+	const handleChangeMonthRange = (date) => {
+		console.log(date);
 	}
 
 	return (
@@ -81,6 +86,19 @@ function SearchBarPopupCalendar() {
 						locale={ko}
 						dateFormatCalendar={'yyyy년 MM월'}
 						onChange={handleChangeRange}
+					/>}
+					{activeNav.month && <CircularSlider
+						label='test'
+						width={200}
+						min={1}
+						max={12}
+						dataIndex={1}
+						knobColor="#fff"
+						progressColorFrom="#ff7f50"
+						progressColorTo="#ff4500"
+						progressSize={8}
+						trackColor="#eeeeee"
+						trackSize={30}
 					/>}
 				</div>
 			</div>

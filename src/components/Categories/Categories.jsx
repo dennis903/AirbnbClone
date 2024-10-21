@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react';
-import axiosClient from '@/utils/axios';
+import { useEffect } from 'react';
 
 function Categories() {
 	useEffect(() => {
 		(async () => {
-			const res = await axiosClient.get('/categories');
+			const res = await fetch('http://localhost:5173/api/user', {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
 
-			console.log(res.data);
+			const data = await res.json();
 
-			console.log(res);
+			console.log(data);
 		})();
 	}, []);
 

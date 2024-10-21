@@ -90,7 +90,7 @@ function SearchBar() {
 					<h2 className={cx('searchbar__title')}>체크아웃</h2>
 					<input type="text" disabled className={cx('searchbar__input')} placeholder="날짜 추가" />
 				</div>
-				<SearchBarPopupCalendar />
+				{(isContentOn.checkIn || isContentOn.checkOut) && <SearchBarPopupCalendar />}
 			</fieldset>
 			<div className={cx('line')} />
 			<fieldset className={cx('searchbar__field')}>
