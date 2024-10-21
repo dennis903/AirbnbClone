@@ -71,3 +71,7 @@ body {
 	overflow: hidden;
 	white-space: nowrap;
 }
+
+main {
+	margin-top: 200px;
+}
