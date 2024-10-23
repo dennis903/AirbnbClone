@@ -33,13 +33,19 @@ function SearchBarPopupCalendar(props) {
 		setStartDate(start);
 		setEndDate(end);
 
-		// startDate에 값이 있는데, start의 값이 startDate의 값보다 다르다면 endDate를 초기화 해줘야 합니다.
-		// endDate에 값이 있는데, end의 값이 endDate의 값보다 다르다면 startDate를 초기화 해줘야 합니다.
+		const formattedStartDate = start && `${start.getMonth() + 1}월 ${start.getDate()}일`;
+		const formattedEndDate = end && `${end.getMonth() + 1}월 ${end.getDate()}일`;
 
+		if (props.startDate && (props.startDate !== formattedStartDate)) {
+			props.setEndDate('');
+		}
+		if (endDate && (endDate !== formattedEndDate)) {
+			props.setStartDate('');
+		}
 		if (start && !end) {
-			props.setStartDate(`${start.getMonth() + 1}월 ${start.getDate()}일`);
+			props.setStartDate(formattedStartDate);
 		} else {
-			props.setEndDate(`${end.getMonth() + 1}월 ${end.getDate()}일`);
+			props.setEndDate(formattedEndDate);
 		}
 	};
 

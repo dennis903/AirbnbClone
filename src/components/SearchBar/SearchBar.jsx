@@ -115,6 +115,8 @@ function SearchBar() {
 					<input type="text" disabled className={cx('searchbar__input')} placeholder="날짜 추가" value={endDate} />
 				</div>
 				{(isContentOn.checkIn || isContentOn.checkOut) && <SearchBarPopupCalendar
+					startDate={startDate}
+					endDate={endDate}
 					setStartDate={setStartDate}
 					setEndDate={setEndDate}
 				/>}
