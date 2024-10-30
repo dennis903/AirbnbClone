@@ -263,4 +263,5 @@ export const handlers = [
 				distance: 998
 			}
 		])
+	})
 ]
