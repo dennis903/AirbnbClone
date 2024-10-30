@@ -7,6 +7,7 @@ import styles from './MainContent.module.css'
 import { ReactComponent as Share } from '@/assets/img/icon/share.svg';
 import { ReactComponent as ArrowLeftSm } from '@/assets/img/icon/arrow-left-sm.svg';
 import { ReactComponent as ArrowRightSm } from '@/assets/img/icon/arrow-right-sm.svg';
+import { ReactComponent as Stars } from '@/assets/img/icon/star.svg';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -17,6 +18,22 @@ import { Navigation, Pagination } from 'swiper/modules';
 
 const cx = classNames.bind(styles);
 function MainContent(props) {
+
+	const formatPrice = (price) => {
+		return price.toLocaleString();
+	};
+
+	const formatdistance = (distance) => {
+		return distance.toLocaleString();
+	}
+
+	const formatDate = (dateString) => {
+		const date = new Date(dateString);
+		const month = date.getMonth() + 1;
+		const day = date.getDate();
+		return `${month}월 ${day}일`;
+	};
+
 	return (
 		<div className={cx('main-content')}>
 			<div className={cx('main-content__img')}>
@@ -54,10 +71,16 @@ function MainContent(props) {
 					<Share />
 				</button>
 			</div>
-			<h2 className={cx('content-title')}>{props.content.title}</h2>
-			<p className={cx('content-text')}>{props.content.distance}</p>
-			<p className={cx('content-text')}>{props.content.startDate} ~ {props.content.endDate}</p>
-			<p className={cx('content-price')}>{props.content.price}</p>
+			<div className={cx('main-content__text')}>
+				<h2 className={cx('content-title')}>{props.content.title}</h2>
+				<p className={cx('content-text')}>{formatdistance(props.content.distance)}km 거리</p>
+				<p className={cx('content-text')}>{formatDate(props.content.startDate)} ~ {formatDate(props.content.endDate)}</p>
+				<p className={cx('content-price')}>₩{formatPrice(props.content.price)} /박</p>
+				<div className={cx('content-stars')}>
+					<Stars />
+					<span className={cx('content-stars__text')}>{props.content.stars}</span>
+				</div>
+			</div>
 		</div>
 	)
 }

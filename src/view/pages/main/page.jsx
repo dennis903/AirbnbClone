@@ -16,7 +16,7 @@ function MainPage() {
 	useEffect(() => {
 		(async () => {
 			const res = await axios.get('/api/posts');
-
+				console.log(res);
 
 			setContents(res.data);
 		})();

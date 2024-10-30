@@ -38,6 +38,16 @@
   z-index: 1;
 }
 
+.main-content__text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .content-title {
   font-weight: 500;
 }
@@ -48,4 +58,16 @@
 
 .content-price {
   font-weight: 500;
+}
+
+.content-stars {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.content-price__subtext {
+  color: ;
 }
