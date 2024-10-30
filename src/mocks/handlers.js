@@ -188,4 +188,79 @@ export const handlers = [
 			}
 		])
 	}),
+	http.get('/api/posts/minihouse', () => {
+		return HttpResponse.json([
+			{
+				id: 1,
+				title: '태국 Rong Kam',
+				startDate: '2024-11-01',
+				endDate: '2024-11-06',
+				price: 644081,
+				images: [
+					'https://a0.muscache.com/im/pictures/miso/Hosting-840416541930146588/original/44a19a54-bafa-432a-854e-933ae4369f22.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/hosting/Hosting-840416541930146588/original/c4b2bc09-0885-47d5-bd2b-c230fe7ba1ed.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/hosting/Hosting-840416541930146588/original/d5637555-70c9-445d-a267-28b6c53ebdf1.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/hosting/Hosting-840416541930146588/original/a34f445f-6793-42b4-baee-670c73352e5a.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/hosting/Hosting-840416541930146588/original/ce11bd96-427c-4b30-a7c3-9acd582c8def.jpeg?im_w=720&im_format=avif'
+				],
+				category: 'minihouse',
+				stars: 4.94,
+				distance: 998
+			},
+			{
+				id: 2,
+				title: '인도 jihbi',
+				startDate: '2024-11-01',
+				endDate: '2024-11-06',
+				price: 644081,
+				images: [
+					'https://a0.muscache.com/im/pictures/miso/Hosting-804959254707180514/original/fdba3a5f-da62-4b50-83ea-517639ba1385.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/miso/Hosting-804959254707180514/original/ea291b96-a445-4f87-aa56-46b546302f1e.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/miso/Hosting-804959254707180514/original/d9eecf06-681d-48ce-86f1-e0044aac1e63.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/miso/Hosting-804959254707180514/original/d5fd884f-a991-4835-a4c0-e5c764a1e1bc.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/miso/Hosting-804959254707180514/original/ff39dfa3-a7e7-401d-b4bb-98644c7aa23e.jpeg?im_w=720&im_format=avif'
+				],
+				category: 'minihouse',
+				stars: 4.94,
+				distance: 998
+			}
+		])
+	}),
+	http.get('/api/posts/popular', () => {
+		return HttpResponse.json([
+			{
+				id: 1,
+				title: '미국 노스캐롤라이나주 샬롯',
+				startDate: '2024-11-01',
+				endDate: '2024-11-06',
+				price: 644081,
+				images: [
+					'https://a0.muscache.com/im/pictures/a8ef5d47-0b5a-4189-abaf-322753e942b2.jpg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/2477d0d5-7d92-43ca-a144-3c934dc57770.jpg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/2477d0d5-7d92-43ca-a144-3c934dc57770.jpg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/hosting/Hosting-840416541930146588/original/a34f445f-6793-42b4-baee-670c73352e5a.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/hosting/Hosting-840416541930146588/original/ce11bd96-427c-4b30-a7c3-9acd582c8def.jpeg?im_w=720&im_format=avif'
+				],
+				category: 'minihouse',
+				stars: 4.94,
+				distance: 998
+			},
+			{
+				id: 2,
+				title: '인도 jihbi',
+				startDate: '2024-11-01',
+				endDate: '2024-11-06',
+				price: 644081,
+				images: [
+					'https://a0.muscache.com/im/pictures/miso/Hosting-804959254707180514/original/fdba3a5f-da62-4b50-83ea-517639ba1385.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/miso/Hosting-804959254707180514/original/ea291b96-a445-4f87-aa56-46b546302f1e.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/miso/Hosting-804959254707180514/original/d9eecf06-681d-48ce-86f1-e0044aac1e63.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/miso/Hosting-804959254707180514/original/d5fd884f-a991-4835-a4c0-e5c764a1e1bc.jpeg?im_w=720&im_format=avif',
+					'https://a0.muscache.com/im/pictures/miso/Hosting-804959254707180514/original/ff39dfa3-a7e7-401d-b4bb-98644c7aa23e.jpeg?im_w=720&im_format=avif'
+				],
+				category: 'minihouse',
+				stars: 4.94,
+				distance: 998
+			}
+		])
 ]
