@@ -12,3 +12,11 @@ export const useSearchBarStore = create((set) => ({
 	// action
 	setGuestCount: (newGuestCount) => set({ guestCount: newGuestCount }),
 }));
+
+export const useCategoryStore = create((set) => ({
+	// state
+	activeCategory: '',
+
+	// action
+	setActiveCategory: (newActiveCategory) => set({ activeCategory: newActiveCategory }),
+}));

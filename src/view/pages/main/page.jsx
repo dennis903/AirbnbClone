@@ -1,9 +1,11 @@
 import axios from 'axios';
+import { Suspense } from 'react';
 
 import AppLayout from '@/view/layouts/app.layout';
 import Header from '@/components/Header/Header';
 import MainContent from '@/components/MainContent/MainContent';
 import Category from '@/components/Category/Category';
+import { useCategoryStore } from '@/store/index';
 
 import classNames from 'classnames/bind';
 import styles from './MainPage.module.css';
@@ -13,16 +15,22 @@ const cx = classNames.bind(styles);
 
 function MainPage() {
 	const [contents, setContents] = useState([]);
+	const { activeCategory } = useCategoryStore();
 
 	useEffect(() => {
 		(async () => {
-			const res = await axios.get('/api/posts');
-				console.log(res);
+			let res = null;
+
+			if (activeCategory !== '') {
+				res = await axios.get(`/api/posts/${activeCategory}`);
+			} else {
+				res = await axios.get('/api/posts');
+			}
 
 			setContents(res.data);
 		})();
 
-	}, []);
+	}, [activeCategory]);
 
 	return (
 		<AppLayout>
