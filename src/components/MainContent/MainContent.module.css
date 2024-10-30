@@ -48,8 +48,12 @@
   gap: 5px;
 }
 
-.content-title {
+.content-header__title {
+	max-width: 250px;
   font-weight: 500;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .content-text {
@@ -60,14 +64,12 @@
   font-weight: 500;
 }
 
-.content-stars {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  right: 0;
+.content-header {
+	display: flex;
+	justify-content: space-between;
 }
 
-.content-price__subtext {
-  color: ;
+.stars {
+  display: flex;
+  align-items: center;
 }

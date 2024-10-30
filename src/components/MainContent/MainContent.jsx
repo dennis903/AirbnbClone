@@ -27,11 +27,12 @@ function MainContent(props) {
 		return distance.toLocaleString();
 	}
 
-	const formatDate = (dateString) => {
-		const date = new Date(dateString);
-		const month = date.getMonth() + 1;
-		const day = date.getDate();
-		return `${month}월 ${day}일`;
+	const formatDate = (startDate, endDate) => {
+		const newStartDate = new Date(startDate);
+		const startMonth = newStartDate.getMonth() + 1;
+		const startDay = newStartDate.getDate();
+
+		return `${startMonth}월 ${startDay}일 ~ ${new Date(endDate).getDate()}일`;
 	};
 
 	return (
@@ -72,14 +73,16 @@ function MainContent(props) {
 				</button>
 			</div>
 			<div className={cx('main-content__text')}>
-				<h2 className={cx('content-title')}>{props.content.title}</h2>
-				<p className={cx('content-text')}>{formatdistance(props.content.distance)}km 거리</p>
-				<p className={cx('content-text')}>{formatDate(props.content.startDate)} ~ {formatDate(props.content.endDate)}</p>
-				<p className={cx('content-price')}>₩{formatPrice(props.content.price)} /박</p>
-				<div className={cx('content-stars')}>
-					<Stars />
-					<span className={cx('content-stars__text')}>{props.content.stars}</span>
+				<div className={cx('content-header')}>
+					<h2 className={cx('content-header__title')}>{props.content.title}</h2>
+					<div className={cx('stars')}>
+						<Stars />
+						<span className={cx('content-stars__text')}>{props.content.stars}</span>
+					</div>
 				</div>
+				<p className={cx('content-text')}>{formatdistance(props.content.distance)}km 거리</p>
+				<p className={cx('content-text')}>{formatDate(props.content.startDate, props.content.endDate)}</p>
+				<p className={cx('content-price')}>₩{formatPrice(props.content.price)} /박</p>
 			</div>
 		</div>
 	)
