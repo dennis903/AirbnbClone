@@ -3,6 +3,7 @@ import axios from 'axios';
 import AppLayout from '@/view/layouts/app.layout';
 import Header from '@/components/Header/Header';
 import MainContent from '@/components/MainContent/MainContent';
+import Category from '@/components/Category/Category';
 
 import classNames from 'classnames/bind';
 import styles from './MainPage.module.css';
@@ -27,6 +28,7 @@ function MainPage() {
 		<AppLayout>
 			<Header />
 			<main>
+				<Category />
 				<div className={cx('contents')}>
 					{contents.map((content) => <MainContent key={content.id} content={content} />)}
 				</div>
