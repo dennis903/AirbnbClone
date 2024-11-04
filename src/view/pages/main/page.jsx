@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import AppLayout from '@/view/layouts/app.layout';
 import Header from '@/components/Header/Header';
 import MainContent from '@/components/MainContent/MainContent';
+import MainContentSkeleton from '@/components/MainContent/MainContent.skeleton'
 import Category from '@/components/Category/Category';
 import { useCategoryStore } from '@/store/index';
 
@@ -37,8 +38,11 @@ function MainPage() {
 			<Header />
 			<main>
 				<Category />
-				<div className={cx('contents')}>
+				{/* <div className={cx('contents')}>
 					{contents.map((content) => <MainContent key={content.id} content={content} />)}
+				</div> */}
+				<div className={cx('contents')}>
+					{contents.map((content) => <MainContentSkeleton key={content.id} content={content} />)}
 				</div>
 			</main>
 		</AppLayout>
